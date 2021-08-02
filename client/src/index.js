@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
+  //ACA VAMOS A ENVOLVER CON REACT ROUTER Y STORE
   <React.StrictMode>
     <App />
   </React.StrictMode>,
