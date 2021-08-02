@@ -1,0 +1,24 @@
+@import "../../theme-variables.css";
+
+.navBar {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 100vw;
+  height: 8vh;
+  left: 0px;
+  top: 0px;
+  background-color: var(--primary-color);
+}
+
+.img {
+  position: relative;
+  width: 250px;
+  height: 56px;
+  padding-left: 40px;
+  padding-top: 5px;
+  /* width: auto;
+  height: auto; */
+}

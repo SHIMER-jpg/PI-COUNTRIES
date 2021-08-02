@@ -1,0 +1,28 @@
+@import "../../theme-variables.css";
+
+.searchInput {
+  width: 12vw;
+  height: 4vh;
+  border-radius: 10rem;
+  border-color: var(--primary-color);
+  background-color: var(--shadow-color);
+  border: none;
+  margin-right: 0.25vw;
+}
+
+.searchButton {
+  text-transform: uppercase;
+  width: 5vw;
+  height: 4vh;
+  border-radius: 10rem;
+  border: var(--secondary-color) solid 1px;
+  background-color: var(--secondary-color);
+}
+
+.container {
+  padding-right: 40px;
+}
+
+.searchButton:hover {
+  background-color: var(--primary-color);
+}

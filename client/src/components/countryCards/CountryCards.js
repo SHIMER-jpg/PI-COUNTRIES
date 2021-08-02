@@ -1,6 +1,6 @@
 import styles from "./CountryCards.module.css"
 
 
-export default function CountryCard(props){
-    return <div className={styles.red}>SOY ROJO!</div>
+export default function CountryCards(props){
+    return <div>SOY COUNTRY CARDS</div>
 }
