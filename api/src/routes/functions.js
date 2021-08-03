@@ -1,7 +1,7 @@
 const { Activity, Country } = require('../db.js');
 const dummyActivities= [
     {
-        "name":"INALAR COCAINA",
+        "name":"Go out Dancing",
         "difficulty":"60",
         "duration":"185",
         "seasonArray":["SPRING","AUTUMN","SUMMER"],

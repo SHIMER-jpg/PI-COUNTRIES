@@ -1,3 +1,5 @@
+@import "../../theme-variables.css";
+
 .container {
   display: flex;
   align-items: flex-start;
@@ -5,7 +7,7 @@
   justify-content: space-evenly;
   top: 27vh;
   width: 225px;
-  height: 375px;
+  height: 425px;
   background-color: var(--primary-color);
   position: fixed;
   overflow-y: scroll;
@@ -43,4 +45,27 @@
   background-color: var(--secondary-color);
   border-radius: 5px;
   border: none;
+}
+
+.applyButton {
+  text-transform: uppercase;
+  width: 200px;
+  height: 4vh;
+  margin-left: 14px;
+  border-radius: 10rem;
+  border: var(--secondary-color) solid 1px;
+  background-color: var(--secondary-color);
+}
+
+.applyButton:hover {
+  background-color: var(--primary-color);
+}
+
+.checkboxContainer {
+  position: relative;
+  /* width: auto;
+  height: auto; */
+  display: flex;
+  flex-flow: column wrap;
+  align-items: flex-start;
 }

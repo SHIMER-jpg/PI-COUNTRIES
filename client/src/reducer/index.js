@@ -36,14 +36,12 @@ export default function reducer (state = initialState, action){
                 if(!continentList.includes(country.continent)){
                     continentList.push(country.continent)
                 }
-                if(country.continent ==""){
-                    console.log(country)
-                }
-                // if(!continentList.includes(country.continentList)){
-                //     continentList.push(country.continentList)
-                // }
+                country.activities.forEach(activity =>{
+                    if(!activityList.includes(activity.name)){
+                        activityList.push(activity.name)
+                    }
+                })
             })
-
             return {
                 ...state,
                 countryList: action.payload,
