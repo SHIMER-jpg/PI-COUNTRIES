@@ -1,0 +1,29 @@
+@import "../../theme-variables.css";
+
+.cardCointainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 350px;
+  height: 300px;
+  border-radius: 25px;
+  border: var(--shadow-color) solid 1px;
+  background-color: var(--secondary-color);
+  margin: 20px 10px 20px 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.flagImg {
+  width: 150px;
+  height: 150px;
+  border-radius: 150px;
+  border: black solid 1px;
+  object-fit: cover;
+}
+
+.text {
+  text-decoration: none;
+}

@@ -14,7 +14,7 @@
   color: var(--secondary-color);
 }
 
-span {
+.span {
   font-weight: bold;
   padding-left: 15px;
 }

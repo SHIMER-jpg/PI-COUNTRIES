@@ -1,0 +1,8 @@
+.cardsContainer {
+  position: relative;
+  top: 25px;
+  display: flex;
+  flex-flow: row wrap;
+  left: 250px;
+  width: 80vw;
+}

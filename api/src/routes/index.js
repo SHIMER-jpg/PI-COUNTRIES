@@ -44,7 +44,7 @@ router.get("/countries/:id",async (req,res)=>{
 router.get("/countries", async (req,res)=>{
     firstLoadBoolean? await firstLoad():""; 
     const {name} = req.query;
-    const countries = await Country.findAll({attributes:["name","continent","flag"]})
+    const countries = await Country.findAll({attributes:["id","name","continent","flag"]})
     if(name){
         var filtered = countries.filter(country => country.name.toLowerCase().includes(name.toLowerCase()))
         if(filtered.length==0){

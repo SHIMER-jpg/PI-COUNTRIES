@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css"
+import { connect } from "react-redux";
+import { getCountryList } from "../../actions";
 
-export default function SearchBar({onSearch}) {
+export  function SearchBar(props) {
   const [country, setCountry] = useState("");
   return (
     <div className={styles.container}>
     <form  onSubmit={(e) => {
       e.preventDefault();
+      props.getCountryList(country)
       // onSearch(city);
     }}>
 
@@ -22,3 +25,7 @@ export default function SearchBar({onSearch}) {
     </div>
   );
 }
+
+
+
+export default connect(null,{getCountryList})(SearchBar)

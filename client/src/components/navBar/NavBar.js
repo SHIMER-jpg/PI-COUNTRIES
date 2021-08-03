@@ -8,9 +8,8 @@ export default function NavBar(props){
         <div className={styles.navBar}>
             <Link to="/">
             <img className={styles.img} src="https://i.ibb.co/mJN7n3V/logo.png" alt="home button" />
-            {/* <img className={styles.img} src="https://picsum.photos/200/300" alt="home button" /> */}
             </Link>
-            <SearchBar className={styles.searchBar}/>
+            {props.location.pathname=="/" && <SearchBar className={styles.searchBar}/>}
         </div>
         )
 }
