@@ -23,7 +23,6 @@ var initialState = {
     continentList:[],
     activityList:[],
     countryList:[],
-    modifiedCountryList:[],
     countryDetails:{},
     page:1,
     newActivity:{},
@@ -49,7 +48,6 @@ export default function reducer (state = initialState, action){
 
             return {
                 ...state,
-                modifiedCountryList: action.payload,
                 countryList: action.payload,
                 activityList: activityList,
                 continentList: continentList
@@ -80,33 +78,54 @@ export default function reducer (state = initialState, action){
             }
         case FILTER_RESULTS:
             //APPLY FILTERING MADE ON ORGANIZER
-            var modifiedCountryList=[]
+            console.log(action.payload)
+            var continent = action.payload.filterByContinent
+            var activityList = action.payload.filterByActivity
+            var countryList=state.countryList
+
+            if(continent!=""){
+                countryList=countryList.filter(country =>{
+                    return country.continent==continent
+                })
+            }
+
+            if(activityList.length>0){
+                countryList=countryList.filter(country=>{
+                    var flag = country.activities.length>0?country.activities.reduce((acc,cur)=>{
+                        return activityList.includes(cur.name) || acc
+                    }):false;
+                    return flag;
+                })
+            }
+
             return{
                 ...state,
-                modifiedCountryList: modifiedCountryList
+                countryList: [...countryList]
             }
 
         case ORDER_RESULTS_NAME:
             //RE ORDER RESULTS
-            
-            console.log(state.modifiedCountryList[0])
-            var modifiedCountryList = state.modifiedCountryList
-            modifiedCountryList= action.payload=="0"? state.modifiedCountryList.sort():state.modifiedCountryList.sort().reverse();
-            console.log(modifiedCountryList[0])
+            var countryList = state.countryList
+            if(action.payload==="0")
+                countryList.sort((a,b)=> a.name>b.name?1:-1);
+            else
+                countryList.sort((a,b)=> a.name<b.name?1:-1);
+                
             return{
                 ...state,
-                modifiedCountryList: modifiedCountryList
+                countryList: [...countryList]
             }
         
-        case ORDER_RESULTS_POP:
-            //FILTER ONLY RESULTS WITHIN POPULATION
-            const {max,min} =action.payload
-            var modifiedCountryList= state.countryList.filter(country=>{
-                return max>country.population && min<country.population
-            })
+        case ORDER_RESULTS_POP: //orders result by population
+            var countryList = state.countryList
+            if(action.payload==="0")
+                countryList.sort((a,b)=> a.population<b.population?1:-1);
+            else
+                countryList.sort((a,b)=> a.population>b.population?1:-1);
+                
             return{
                 ...state,
-                modifiedCountryList: modifiedCountryList
+                countryList: [...countryList]
             }
 
         default:

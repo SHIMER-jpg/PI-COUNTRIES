@@ -45,14 +45,19 @@ router.get("/countries", async (req,res)=>{
     firstLoadBoolean? await firstLoad():""; 
     const {name} = req.query;
     // const countries = await Country.findAll({attributes:["id","name","continent","flag"]})
-    const countries = await Country.findAll({include: Activity})
+    var countries = await Country.findAll({include: Activity})
+    
+    countries.sort(function(a,b){
+        return a.name > b.name? 1:-1;
+    });
+
     if(name){
         var filtered = countries.filter(country => country.name.toLowerCase().includes(name.toLowerCase()))
         if(filtered.length==0){
             res.json([])
         }
-        else
-            res.json(filtered)
+        else{
+            res.json(filtered)}
     }else
         res.json(countries)
 })

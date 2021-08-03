@@ -26,25 +26,6 @@
   padding-bottom: 2.5px;
 }
 
-.minmaxcontainer {
-  display: inherit;
-  width: auto;
-  align-items: center;
-  flex-wrap: wrap;
-  flex-direction: row;
-
-  border-bottom: 1px solid black;
-}
-
-.minmaxInput {
-  margin-left: 25px;
-  margin-bottom: 10px;
-  width: 125px;
-  height: 30px;
-  border: var(--secondary-color) solid 1px;
-  border-radius: 5px;
-}
-
 .selector {
   position: relative;
   width: 200px;
