@@ -17,6 +17,8 @@ import {
     } from "../actions";
 
 var initialState = {
+    continentList:[],
+    activityList:[],
     countryList:[],
     countryDetails:{},
     page:1,
@@ -26,9 +28,27 @@ var initialState = {
 export default function reducer (state = initialState, action){
     switch(action.type){
         case GET_COUNTRY_LIST:
+
+            // Compongo las listas de actividades y continentes
+            var activityList = []
+            var continentList = []
+            action.payload.forEach(country =>{
+                if(!continentList.includes(country.continent)){
+                    continentList.push(country.continent)
+                }
+                if(country.continent ==""){
+                    console.log(country)
+                }
+                // if(!continentList.includes(country.continentList)){
+                //     continentList.push(country.continentList)
+                // }
+            })
+
             return {
                 ...state,
-                countryList: action.payload
+                countryList: action.payload,
+                activityList: activityList,
+                continentList: continentList
             }
 
         case GET_COUNTRY_DETAIL:

@@ -11,8 +11,6 @@ export function CountryCards(props){
     useEffect(()=>{
         props.getCountryList("")
     },[])
-    console.log(props.countryList)
-
     return (<div className={styles.cardsContainer}>
         {props.countryList.map(country=>{
             return (<>
@@ -23,7 +21,6 @@ export function CountryCards(props){
             </>)
         })}
     </div>)
-
 }
 
 
