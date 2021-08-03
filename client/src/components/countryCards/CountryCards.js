@@ -8,11 +8,13 @@ import {Link} from "react-router-dom"
 
 
 export function CountryCards(props){
+    
     useEffect(()=>{
         props.getCountryList("")
     },[])
+
     return (<div className={styles.cardsContainer}>
-        {props.countryList.map(country=>{
+        {props.modifiedCountryList.map(country=>{
             return (<>
             <Link to={"/country/"+country.id}>
                 <CountryCard name={country.name} flag={country.flag} continent={country.continent} id={country.id}/>
@@ -27,7 +29,7 @@ export function CountryCards(props){
 
 function mapStateToProps(state) {
     return {
-        countryList: state.countryList
+        modifiedCountryList: state.modifiedCountryList
     }
 }
 

@@ -14,12 +14,16 @@ import {
     CREATE_ACTIVITY,
     NEXT_PAGE,
     PREVIOUS_PAGE, 
+    FILTER_RESULTS,
+    ORDER_RESULTS_NAME,
+    ORDER_RESULTS_POP,
     } from "../actions";
 
 var initialState = {
     continentList:[],
     activityList:[],
     countryList:[],
+    modifiedCountryList:[],
     countryDetails:{},
     page:1,
     newActivity:{},
@@ -42,8 +46,10 @@ export default function reducer (state = initialState, action){
                     }
                 })
             })
+
             return {
                 ...state,
+                modifiedCountryList: action.payload,
                 countryList: action.payload,
                 activityList: activityList,
                 continentList: continentList
@@ -72,7 +78,41 @@ export default function reducer (state = initialState, action){
                 ...state,
                 newActivity: action.payload
             }
+        case FILTER_RESULTS:
+            //APPLY FILTERING MADE ON ORGANIZER
+            var modifiedCountryList=[]
+            return{
+                ...state,
+                modifiedCountryList: modifiedCountryList
+            }
+
+        case ORDER_RESULTS_NAME:
+            //RE ORDER RESULTS
+            
+            console.log(state.modifiedCountryList[0])
+            var modifiedCountryList = state.modifiedCountryList
+            modifiedCountryList= action.payload=="0"? state.modifiedCountryList.sort():state.modifiedCountryList.sort().reverse();
+            console.log(modifiedCountryList[0])
+            return{
+                ...state,
+                modifiedCountryList: modifiedCountryList
+            }
+        
+        case ORDER_RESULTS_POP:
+            //FILTER ONLY RESULTS WITHIN POPULATION
+            const {max,min} =action.payload
+            var modifiedCountryList= state.countryList.filter(country=>{
+                return max>country.population && min<country.population
+            })
+            return{
+                ...state,
+                modifiedCountryList: modifiedCountryList
+            }
+
         default:
             return state
     }
+    // FILTER_RESULTS,
+    // ORDER_RESULTS_NAME,
+    // ORDER_RESULTS_POP,
 }

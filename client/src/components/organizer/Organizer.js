@@ -1,43 +1,51 @@
 import styles from "./Organizer.module.css"
 import {useState} from "react"
 import { connect } from "react-redux"
-
+import { orderResultsByName,orderResultsByPopulation, filterResults} from "../../actions"
 
 
 
 
 
 export  function Organizer(props){
+
+    
     const [input,setInput] = useState({
-        orderByName:"0",
-        minPopulation:0,
-        maxPopulation:0,
+        // orderByName:"0",
+        // minPopulation:0,
+        // maxPopulation:0,
         filterByContinent:"",
-        filterByActivity:props.activityList
+        filterByActivity:[],
     })
 
     function handleSubmit(e){
         e.preventDefault();
+        console.log(input)
     }
 
     function handleChange({target}){
-        console.log(props)
         if(target.name == "orderByName"){
+            props.orderResultsByName(target.value)
+
+        }else if(target.name == "filterByContinent"){
             setInput({...input,
                 [target.name]: target.value
             })
         }else if(target.name == "maxPopulation" || target.name=="minPopulation"){
             var val =  !target.value? 0 :target.value <0 ? 0: parseInt(target.value);
-                setInput({
-                    ...input,
-                    [target.name]:val
-                })
+                // setInput({
+                //     ...input,
+                //     [target.name]:val
+                // })
             }
+        else{
+            var index = input.filterByActivity.indexOf(target.value)
+            index ==-1? setInput({...input, filterByActivity: [...input.filterByActivity,target.value]}):setInput({...input, filterByActivity:input.filterByActivity.filter(name=>name!=target.value)});
         }
+        console.log(input)
+    }
 
-    console.log(input)
-    console.log(props.activityList)
-    
+
     return(
     <form onSubmit={handleSubmit}> 
         <div className={styles.container}>
@@ -54,22 +62,17 @@ export  function Organizer(props){
                 <input onChange={handleChange} className={styles.minmaxInput} type="number" name="minPopulation" value={input.minPopulation}/>
             </div>
             <span className={styles.span}>Filter by Continent</span>
-                <select className={styles.selector} name="filterByContinent">
+                <select onChange={handleChange} className={styles.selector} name="filterByContinent">
                     {props.continentList.map(continent=>{
                         return (<option value={continent}>{continent}</option>)
                     })}
                 </select>
             <span className={styles.span}>Filter by Activity</span>
-                {/* <select onChange={handleChange} className={styles.selector} name="filterByActivity" value={input.filterByActivity}>
-                    {props.activityList.map(activity=>{
-                        return (<option value={activity}>{activity}</option>)
-                    })}
-                </select> */}
-                <ul className ="checkboxContainer">
+                <ul className ={styles.checkboxContainer}>
                 {props.activityList.map((activity,index)=>{
                     return (
                     <li>
-                        <input type="checkbox" value={activity} name={activity}></input> 
+                        <input type="checkbox" onChange={handleChange} value={activity} name={activity}></input> 
                         <label>{activity}</label>
                     </li>)
                     //     <input type="checkbox" id="topping" name="topping" value="Paneer" />Paneer
@@ -89,4 +92,4 @@ function  mapStateToProps (state){
     }
 }
 
-export default connect(mapStateToProps,{})(Organizer)
+export default connect(mapStateToProps,{orderResultsByPopulation,orderResultsByName,filterResults})(Organizer)

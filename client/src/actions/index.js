@@ -5,8 +5,15 @@ import axios from "axios"
 export const GET_COUNTRY_LIST = "GET_COUNTRY_LIST"
 export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL"
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY"
+
 export const NEXT_PAGE = "NEXT_PAGE"
 export const PREVIOUS_PAGE = "PREVIOUS_PAGE"
+
+export const FILTER_RESULTS ="FILTER_RESULTS"
+
+export const ORDER_RESULTS_NAME = "ORDER_RESULTS_NAME"
+
+export const ORDER_RESULTS_POP = "ORDER_RESULTS_POP"
 
 export function getCountryList(payload){//receives searchString
     return function(dispatch){
@@ -35,6 +42,18 @@ export function nextPage(payload){ //Receives page number
 }
 export function previousPage(payload){ //Receives pagenumber
     return ({type:PREVIOUS_PAGE,payload})
+}
+
+export function filterResults(payload){//Receives Object with filters
+    return ({type:FILTER_RESULTS , payload})
+}
+
+export function orderResultsByName(payload){ //receives either ASC or DESC
+    return ({type:ORDER_RESULTS_NAME, payload})
+}
+
+export function orderResultsByPopulation(payload){ //receives two ints
+    return ({type:ORDER_RESULTS_POP, payload})
 }
 
 export default {
