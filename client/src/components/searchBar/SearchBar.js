@@ -9,8 +9,8 @@ export  function SearchBar(props) {
     <div className={styles.container}>
     <form  onSubmit={(e) => {
       e.preventDefault();
-      props.getCountryList(country)
       props.setPage(1)
+      props.getCountryList(country)
       // onSearch(city);
     }}>
 

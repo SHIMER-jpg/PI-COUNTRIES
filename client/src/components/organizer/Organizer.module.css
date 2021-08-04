@@ -1,6 +1,7 @@
 @import "../../theme-variables.css";
 
 .container {
+  position: fixed;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -12,7 +13,6 @@
 
   padding-bottom: 10px;
   background-color: var(--primary-color);
-  position: fixed;
   overflow-y: scroll;
   overflow-x: hidden;
   border-radius: 0px 10px 10px 0px;

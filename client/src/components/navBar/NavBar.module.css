@@ -1,7 +1,7 @@
 @import "../../theme-variables.css";
 
 .navBar {
-  position: sticky;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: space-between;

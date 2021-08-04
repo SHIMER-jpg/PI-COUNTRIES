@@ -5,12 +5,14 @@ import Home from "./components/home/Home"
 import ActivityForm from "./components/activityForm/ActivityForm"
 import CountryDetails from "./components/countryDetails/CountryDetails"
 import { PageSelector } from './components/pageSelector/pageSelector';
+import Animation from './components/animation/Animation';
 
 
 function App() {
   return (
     //ACA VAMOS A HACER EL ROUTING
     <Router>
+      <Animation />
     <div className="App">
       <Route path="/" component={NavBar}/>
       <Route exact path="/" component={Home}/>

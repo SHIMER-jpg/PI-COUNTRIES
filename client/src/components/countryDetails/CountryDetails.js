@@ -3,6 +3,7 @@ import styles from "./CountryDetails.module.css"
 import { connect } from "react-redux"
 import { getCountryDetail } from "../../actions"
 import { useEffect } from "react"
+import ActivityCard from "../activityCard/ActivityCard"
 
 export  function CountryDetails(props){
 
@@ -17,18 +18,29 @@ export  function CountryDetails(props){
     useEffect(()=>{
         props.getCountryDetail(props.match.params.id)
     },[])
-    var {name,flag,continent,capital,subregion,area,population} = props.countryDetails
 
+    var {name,flag,continent,capital,subregion,area,population,activities} = props.countryDetails
+    console.log(props)
     return (
+    <>
         <div className={styles.detailsContainer}>
-            <h2>{name} </h2>
+            {/* <h2 className={styles.title}>{name?name.toUpperCase():name} </h2> */}
+            <h2 className={styles.title}>{name? name.toUpperCase():"loading"} </h2>
             <img className={styles.flagImg} src={`${flag}`}/>
-            <span>Capital: {capital}</span>
-            <span>SubRegion: {subregion}</span>
-            <span>Continent: {continent}</span>
-            <span>Population: {population}</span>
-            <span>Area: {area}</span>
+            <div className={styles.infoContainer}>
+                <span className={styles.text}>Capital: {capital}</span>
+                <span className={styles.text}>SubRegion: {subregion}</span>
+                <span className={styles.text}>Continent: {continent}</span>
+                <span className={styles.text}>Population: {new Intl.NumberFormat("de-DE").format(population)}</span>
+                <span className={styles.text}>Area: {new Intl.NumberFormat("de-DE").format(area)} km2</span>
+            </div>
         </div>
+        <div className={styles.activityList}>
+                {activities? activities.map(activity =>{
+                    return <div><ActivityCard activity={activity} /></div>
+                }): <span>Loading... </span>}
+        </div>
+    </>
     )
 }
 

@@ -1,13 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
 .App {
   text-align: center;
   position: sticky;
-  background: url(./bg.png);
+  width: auto;
+  /* background: url(./bg.png); */
+  background: url(./bg2.png);
+  /* background-color: grey; */
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: repeat;
+  background-size: contain;
   background-attachment: fixed;
   min-height: 140vh;
   height: auto;
+  font-family: "Roboto", sans-serif;
 }
 
 .App-logo {
