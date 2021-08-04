@@ -4,6 +4,7 @@ import NavBar from "./components/navBar/NavBar"
 import Home from "./components/home/Home"
 import ActivityForm from "./components/activityForm/ActivityForm"
 import CountryDetails from "./components/countryDetails/CountryDetails"
+import { PageSelector } from './components/pageSelector/pageSelector';
 
 
 function App() {

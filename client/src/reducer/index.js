@@ -1,13 +1,3 @@
-/*
-States to track:
-
-- Array with 9 countries
-- Page number
-- Country details
-- Activities Related
-- Activity to add
- */
-
 import {     
     GET_COUNTRY_DETAIL,
     GET_COUNTRY_LIST,
@@ -17,6 +7,7 @@ import {
     FILTER_RESULTS,
     ORDER_RESULTS_NAME,
     ORDER_RESULTS_POP,
+    SET_PAGE,
     } from "../actions";
 
 var initialState = {
@@ -58,17 +49,24 @@ export default function reducer (state = initialState, action){
                 ...state,
                 countryDetails: action.payload
             }
-
         case NEXT_PAGE:
+            var value = state.page== Math.round(state.countryList.length/9) ? Math.round(state.countryList.length/9):state.page+1
             return {
                 ...state,
-                page: state.page+1
+                page: value
             }
 
         case PREVIOUS_PAGE:
+            var value = state.page==1? 1:state.page-1
             return {
                 ...state,
-                page: state.page-1
+                page: value
+            }
+        
+        case SET_PAGE:
+            return {
+                ...state,
+                page: action.payload
             }
         
         case CREATE_ACTIVITY:
@@ -78,7 +76,6 @@ export default function reducer (state = initialState, action){
             }
         case FILTER_RESULTS:
             //APPLY FILTERING MADE ON ORGANIZER
-            console.log(action.payload)
             var continent = action.payload.filterByContinent
             var activityList = action.payload.filterByActivity
             var countryList=state.countryList

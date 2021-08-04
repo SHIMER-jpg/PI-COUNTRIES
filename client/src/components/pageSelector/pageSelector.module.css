@@ -1,0 +1,23 @@
+.pageSwitcher {
+  width: 75px;
+  height: 30px;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border: solid 2px var(--primary-color);
+}
+
+.arrowsContainer {
+  position: relative;
+  float: right;
+  right: 10%;
+  top: 12px;
+  width: 200px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pageNumber {
+  color: var(--secondary-color);
+}

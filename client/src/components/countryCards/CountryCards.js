@@ -13,23 +13,25 @@ export function CountryCards(props){
         props.getCountryList("")
     },[])
 
-    return (<div className={styles.cardsContainer}>
-        {props.countryList.map(country=>{
-            return (<>
-            <Link to={"/country/"+country.id}>
-                <CountryCard name={country.name} flag={country.flag} continent={country.continent} id={country.id}/>
-            </Link>
+    var topIndex=props.page*9
+    var botIndex=(props.page-1)*9
 
-            </>)
+    return (<div className={styles.cardsContainer}>
+        {props.countryList.map((country,index)=>{
+            if(index>botIndex && index<=topIndex){
+                return (<>
+                        <CountryCard name={country.name} flag={country.flag} continent={country.continent} id={country.id}/>
+                </>)
+            }
         })}
     </div>)
 }
 
 
-
 function mapStateToProps(state) {
     return {
-        countryList: state.countryList
+        countryList: state.countryList,
+        page: state.page
     }
 }
 

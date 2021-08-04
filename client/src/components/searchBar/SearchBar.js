@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styles from "./SearchBar.module.css"
 import { connect } from "react-redux";
-import { getCountryList } from "../../actions";
+import { getCountryList ,setPage} from "../../actions";
 
 export  function SearchBar(props) {
   const [country, setCountry] = useState("");
@@ -10,6 +10,7 @@ export  function SearchBar(props) {
     <form  onSubmit={(e) => {
       e.preventDefault();
       props.getCountryList(country)
+      props.setPage(1)
       // onSearch(city);
     }}>
 
@@ -28,4 +29,4 @@ export  function SearchBar(props) {
 
 
 
-export default connect(null,{getCountryList})(SearchBar)
+export default connect(null,{getCountryList,setPage})(SearchBar)

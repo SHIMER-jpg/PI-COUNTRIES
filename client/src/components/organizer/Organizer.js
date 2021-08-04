@@ -1,7 +1,7 @@
 import styles from "./Organizer.module.css"
 import {useState} from "react"
 import { connect } from "react-redux"
-import { orderResultsByName,orderResultsByPopulation, filterResults,getCountryList} from "../../actions"
+import { orderResultsByName,orderResultsByPopulation, filterResults,getCountryList, setPage} from "../../actions"
 
 export  function Organizer(props){
 
@@ -19,11 +19,12 @@ export  function Organizer(props){
     }
 
     function handleChange({target}){
-        console.log(target.value)
         if(target.name == "orderByName"){
             props.orderResultsByName(target.value)
+            props.setPage(1)
         }else if(target.name == "orderByPopulation"){
             props.orderResultsByPopulation(target.value)
+            props.setPage(1)
         }else if(target.name == "filterByContinent"){
             setInput({...input,
                 [target.name]: target.value
@@ -69,6 +70,7 @@ export  function Organizer(props){
                 { !filtered&&<input className={styles.applyButton} type="submit" value="Apply Filters" />}
                 { filtered&&<input className={styles.applyButton} onClick={()=>{props.getCountryList("");setFiltered(!filtered)}} type="reset" value="Remove Filters" />}
         </div>
+
     </ form >
     )
 }
@@ -80,4 +82,4 @@ function  mapStateToProps (state){
     }
 }
 
-export default connect(mapStateToProps,{orderResultsByPopulation,orderResultsByName,filterResults,getCountryList})(Organizer)
+export default connect(mapStateToProps,{orderResultsByPopulation,orderResultsByName,filterResults,getCountryList,setPage})(Organizer)

@@ -7,6 +7,7 @@ export const GET_COUNTRY_DETAIL = "GET_COUNTRY_DETAIL"
 export const CREATE_ACTIVITY = "CREATE_ACTIVITY"
 
 export const NEXT_PAGE = "NEXT_PAGE"
+export const SET_PAGE = "SET_PAGE"
 export const PREVIOUS_PAGE = "PREVIOUS_PAGE"
 
 export const FILTER_RESULTS ="FILTER_RESULTS"
@@ -37,11 +38,16 @@ export function createActivity(payload){//receives OBJECT with activity
     }
 } 
 
-export function nextPage(payload){ //Receives page number
-    return ({type:NEXT_PAGE,payload})
+export function nextPage(){ //PAGE+1
+    return ({type:NEXT_PAGE})
 }
-export function previousPage(payload){ //Receives pagenumber
-    return ({type:PREVIOUS_PAGE,payload})
+
+export function setPage(payload){ //Receives pagenumber
+    return ({type:SET_PAGE,payload})
+}
+
+export function previousPage(){ //PAGE -1
+    return ({type:PREVIOUS_PAGE})
 }
 
 export function filterResults(payload){//Receives Object with filters

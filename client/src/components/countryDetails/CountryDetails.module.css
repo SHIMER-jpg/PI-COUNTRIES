@@ -1,0 +1,25 @@
+.detailsContainer {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  width: 900px;
+  height: 500px;
+  border-radius: 25px;
+  border: var(--shadow-color) solid 1px;
+  background-color: var(--secondary-color);
+  margin: 20px 10px 20px 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.flagImg {
+  width: 300px;
+  height: 150px;
+  border: black solid 1px;
+  object-fit: cover;
+}
+
