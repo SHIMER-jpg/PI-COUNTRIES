@@ -17,6 +17,9 @@
   overflow-x: hidden;
   border-radius: 0px 10px 10px 0px;
   color: var(--secondary-color);
+  background-color: var(--primary-color);
+  box-shadow: 4px 4px 0px var(--secondary-color);
+  border: black solid 4px;
 }
 
 .span {

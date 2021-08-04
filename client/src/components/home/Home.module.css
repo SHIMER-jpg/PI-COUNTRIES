@@ -2,3 +2,15 @@
   position: relative;
   top: 8vh;
 }
+
+.addPageButton {
+  position: absolute;
+  padding: 5px;
+  left: 25%;
+  top: 1%;
+  background-color: var(--secondary-color);
+  border-radius: 10px;
+  border: solid 2px black;
+  box-shadow: 2px 2px 0px var(--primary-color);
+  font-weight: bold;
+}

@@ -7,8 +7,8 @@
   /* box-shadow: 4px 4px 0px var(--primary-color); */
   background-color: var(--primary-color);
   box-shadow: 4px 4px 0px var(--secondary-color);
-  /* background-color: var(--secondary-color); */
   border: black solid 4px;
+  /* background-color: var(--secondary-color); */
   overflow: hidden;
   display: flex;
   flex-direction: column;

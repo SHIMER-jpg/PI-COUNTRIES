@@ -8,15 +8,16 @@
   background-color: var(--shadow-color);
   border: none;
   margin-right: 0.25vw;
+  border: black solid 2px;
 }
 
 .searchButton {
   text-transform: uppercase;
   width: 5vw;
-  height: 4vh;
+  height: 5vh;
   border-radius: 10rem;
-  border: var(--secondary-color) solid 1px;
   background-color: var(--secondary-color);
+  border: black solid 2px;
 }
 
 .container {
@@ -24,5 +25,7 @@
 }
 
 .searchButton:hover {
+  border: var(--secondary-color) solid 1px;
+
   background-color: var(--primary-color);
 }

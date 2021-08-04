@@ -3,7 +3,8 @@
   height: 30px;
   background-color: var(--secondary-color);
   border-radius: 10px;
-  border: solid 2px var(--primary-color);
+  border: solid 2px black;
+  box-shadow: 2px 2px 0px var(--primary-color);
 }
 
 .arrowsContainer {
@@ -20,4 +21,5 @@
 
 .pageNumber {
   color: var(--secondary-color);
+  font-weight: bold;
 }

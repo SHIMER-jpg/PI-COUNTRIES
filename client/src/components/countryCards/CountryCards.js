@@ -12,7 +12,7 @@ export function CountryCards(props) {
 
   var topIndex = (props.page * 9)-1;
   var botIndex = (props.page - 1) * 9;
-  console.log(props.countryList)
+
   return (
     <div className={styles.cardsContainer}>
       {props.countryList.map((country, index) => {

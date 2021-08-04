@@ -14,6 +14,7 @@ var initialState = {
     continentList:[],
     activityList:[],
     countryList:[],
+    countryCodeList:[],
     countryDetails:{},
     page:1,
     newActivity:{},
@@ -26,7 +27,9 @@ export default function reducer (state = initialState, action){
             // Compongo las listas de actividades y continentes
             var activityList = []
             var continentList = []
+            var countryCodeList = []
             action.payload.forEach(country =>{
+                countryCodeList.push(country.id)
                 if(!continentList.includes(country.continent)){
                     continentList.push(country.continent)
                 }
@@ -39,6 +42,7 @@ export default function reducer (state = initialState, action){
 
             return {
                 ...state,
+                countryCodeList: countryCodeList,
                 countryList: action.payload,
                 activityList: activityList,
                 continentList: continentList
