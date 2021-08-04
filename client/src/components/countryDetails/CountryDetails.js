@@ -1,7 +1,7 @@
 
 import styles from "./CountryDetails.module.css"
 import { connect } from "react-redux"
-import { getCountryDetail } from "../../actions"
+import { getCountryDetail,setPage } from "../../actions"
 import { useEffect } from "react"
 import ActivityCard from "../activityCard/ActivityCard"
 
@@ -17,6 +17,7 @@ export  function CountryDetails(props){
     
     useEffect(()=>{
         props.getCountryDetail(props.match.params.id)
+        props.setPage(1)
     },[])
 
     var {name,flag,continent,capital,subregion,area,population,activities} = props.countryDetails
@@ -49,4 +50,4 @@ function mapStateToProps(state){
         countryDetails: state.countryDetails
     }
 }
-export default connect(mapStateToProps,{getCountryDetail})(CountryDetails)
+export default connect(mapStateToProps,{getCountryDetail,setPage})(CountryDetails)

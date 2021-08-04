@@ -10,13 +10,13 @@ export function CountryCards(props) {
     props.getCountryList("");
   }, []);
 
-  var topIndex = props.page * 9;
+  var topIndex = (props.page * 9)-1;
   var botIndex = (props.page - 1) * 9;
-
+  console.log(props.countryList)
   return (
     <div className={styles.cardsContainer}>
       {props.countryList.map((country, index) => {
-        if (index > botIndex && index <= topIndex) {
+        if (index >= botIndex && index <= topIndex) {
           return (
             <>
               <CountryCard

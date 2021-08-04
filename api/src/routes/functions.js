@@ -17,6 +17,14 @@ const dummyActivities= [
         "countries":["USA","ARG"]
     },
     {
+        "name":"Skying",
+        "difficulty":"80",
+        "duration":"400",
+        "seasonArray":["WINTER"],
+        "description":"Skying in the Snow",
+        "countries":["USA","ARG"]
+    },
+    {
         "name":"BullFight",
         "difficulty":"100",
         "duration":"60",
