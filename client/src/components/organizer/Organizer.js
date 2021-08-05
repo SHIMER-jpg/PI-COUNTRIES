@@ -1,5 +1,5 @@
 import styles from "./Organizer.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import {
   orderResultsByName,
@@ -16,6 +16,10 @@ export function Organizer(props) {
   });
 
   const [filtered, setFiltered] = useState(false);
+
+  useEffect(() => {
+    // props.getCountryList("");
+  }, [props.activityList]);
 
   function handleSubmit(e) {
     e.preventDefault();

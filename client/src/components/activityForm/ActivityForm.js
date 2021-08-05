@@ -5,7 +5,6 @@ import { getCountryList, createActivity } from "../../actions";
 import { useEffect, useState } from "react";
 
 export function ActivityForm(props) {
-
   const [activity, setActivity] = useState({
     name: "",
     difficulty: 0,
@@ -14,47 +13,37 @@ export function ActivityForm(props) {
     countries: [], //["USA","AFG"]
   });
 
-  const toggleCheckbox = ({target}) =>{
-    var newArr=activity.seasonArray
-    var index = newArr.indexOf(target.name)
-    
+  const toggleCheckbox = ({ target }) => {
+    var newArr = activity.seasonArray;
+    var index = newArr.indexOf(target.name);
+
     switch (target.name) {
       case "WINTER":
-          if(index ==-1)
-            newArr.push("WINTER")
-          else
-            newArr.splice(index,1)
+        if (index == -1) newArr.push("WINTER");
+        else newArr.splice(index, 1);
         break;
       case "SPRING":
-          if(index ==-1)
-            newArr.push("SPRING")
-          else
-            newArr.splice(index,1)
+        if (index == -1) newArr.push("SPRING");
+        else newArr.splice(index, 1);
         break;
       case "SUMMER":
-          if(index ==-1)
-            newArr.push("SUMMER")
-          else
-            newArr.splice(index,1)
+        if (index == -1) newArr.push("SUMMER");
+        else newArr.splice(index, 1);
         break;
       case "AUTUMN":
-          if(index ==-1)
-            newArr.push("AUTUMN")
-          else
-            newArr.splice(index,1)
+        if (index == -1) newArr.push("AUTUMN");
+        else newArr.splice(index, 1);
         break;
-    
+
       default:
         break;
     }
 
     setActivity({
       ...activity,
-      seasonArray: newArr
-    })
-
-    console.log(activity)
-  }
+      seasonArray: newArr,
+    });
+  };
 
   useEffect(() => {
     props.getCountryList("");
@@ -104,6 +93,8 @@ export function ActivityForm(props) {
     //   countries: props.countryList.map((c) => c.id),
     // });
     props.createActivity(activity);
+    props.getCountryList("");
+    props.history.push("/");
   };
 
   return (
@@ -136,28 +127,44 @@ export function ActivityForm(props) {
                 <div className={styles.sliderGroup}>
                   <span>Winter</span>
                   <label className={slider.switch}>
-                    <input type="checkbox" name="WINTER" onChange={toggleCheckbox} />
+                    <input
+                      type="checkbox"
+                      name="WINTER"
+                      onChange={toggleCheckbox}
+                    />
                     <span className={`${slider.slider} ${slider.round}`}></span>
                   </label>
                 </div>
                 <div className={styles.sliderGroup}>
                   <span>Spring</span>
                   <label className={slider.switch}>
-                    <input type="checkbox" name="SPRING" onChange={toggleCheckbox} />
+                    <input
+                      type="checkbox"
+                      name="SPRING"
+                      onChange={toggleCheckbox}
+                    />
                     <span className={`${slider.slider} ${slider.round}`}></span>
                   </label>
                 </div>
                 <div className={styles.sliderGroup}>
                   <span>Summer</span>
                   <label className={slider.switch}>
-                    <input type="checkbox" name="SUMMER" onChange={toggleCheckbox} />
+                    <input
+                      type="checkbox"
+                      name="SUMMER"
+                      onChange={toggleCheckbox}
+                    />
                     <span className={`${slider.slider} ${slider.round}`}></span>
                   </label>
                 </div>
                 <div className={styles.sliderGroup}>
                   <span>Autumn</span>
                   <label className={slider.switch}>
-                    <input type="checkbox" name="AUTUMN" onChange={toggleCheckbox} />
+                    <input
+                      type="checkbox"
+                      name="AUTUMN"
+                      onChange={toggleCheckbox}
+                    />
                     <span className={`${slider.slider} ${slider.round}`}></span>
                   </label>
                 </div>
@@ -222,4 +229,6 @@ function mapStateToProps(state) {
     countryList: state.countryList,
   };
 }
-export default connect(mapStateToProps, { getCountryList,createActivity})(ActivityForm);
+export default connect(mapStateToProps, { getCountryList, createActivity })(
+  ActivityForm
+);
