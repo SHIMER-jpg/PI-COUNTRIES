@@ -8,6 +8,7 @@ import {
     ORDER_RESULTS_NAME,
     ORDER_RESULTS_POP,
     SET_PAGE,
+    FIRST_LOGIN,
     } from "../actions";
 
 var initialState = {
@@ -18,6 +19,7 @@ var initialState = {
     countryDetails:{},
     page:1,
     newActivity:{},
+    firstLogin:true,
 }
 
 export default function reducer (state = initialState, action){
@@ -84,17 +86,19 @@ export default function reducer (state = initialState, action){
             var activityList = action.payload.filterByActivity
             var countryList=state.countryList
 
+
             if(continent!=""){
                 countryList=countryList.filter(country =>{
                     return country.continent==continent
                 })
             }
 
-            if(activityList.length>0){
+            if(activityList.length>0){ 
                 countryList=countryList.filter(country=>{
                     var flag = country.activities.length>0?country.activities.reduce((acc,cur)=>{
                         return activityList.includes(cur.name) || acc
                     }):false;
+                    console.log(country.name,!!flag)
                     return flag;
                 })
             }
@@ -127,6 +131,12 @@ export default function reducer (state = initialState, action){
             return{
                 ...state,
                 countryList: [...countryList]
+            }
+
+        case FIRST_LOGIN:
+            return {
+                ...state,
+                firstLogin: false
             }
 
         default:

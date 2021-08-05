@@ -5,20 +5,26 @@ import Home from "./components/home/Home"
 import ActivityForm from "./components/activityForm/ActivityForm"
 import CountryDetails from "./components/countryDetails/CountryDetails"
 import { PageSelector } from './components/pageSelector/pageSelector';
-import Animation from './components/animation/Animation';
+import Animation from "./components/animation/Animation"
+import LandingPage from './components/landingPage/LandingPage';
+
+import { useSelector } from 'react-redux';
 
 
 function App() {
+  const firstLogin = useSelector (state => state.firstLogin)
+  console.log(firstLogin)
   return (
     //ACA VAMOS A HACER EL ROUTING
     <Router>
-      <Animation />
-    <div className="App">
-      <Route path="/" component={NavBar}/>
-      <Route exact path="/" component={Home}/>
-      <Route path="/activity" component={ActivityForm} />
-      <Route path="/country/:id" component={CountryDetails} />
-    </div>
+      <div className="App">
+        {!firstLogin &&  <Animation/>}
+        {firstLogin && <Route path="/" component={LandingPage} />}
+        <Route path="/" component={NavBar}/>
+        <Route exact path="/" component={Home}/>
+        <Route path="/activity" component={ActivityForm} />
+        <Route path="/country/:id" component={CountryDetails} />
+      </div>
     </Router>
   );
 }

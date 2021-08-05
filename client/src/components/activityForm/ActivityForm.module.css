@@ -6,33 +6,52 @@
   width: 600px;
   height: 400px;
   border-radius: 25px;
-
-  background-color: var(--secondary-color);
-  margin: 20px 10px 20px 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
   background-color: var(--secondary-color);
   box-shadow: 4px 4px 0px var(--primary-color);
   overflow: hidden;
+  margin: 20px 10px 20px 10px;
 }
 
 .text {
   /* margin: 0px; */
   /* padding: 10px 0px 10px 0px; */
-
   font-weight: bold;
   width: 100%;
   text-decoration: none;
-  color: var(--secondary-color);
+  color: black;
 }
 
+.sliderGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.seasonGroup {
+  padding: 5px;
+
+  height: 50px;
+  width: 300px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
 .infoContainer {
-  padding: 15px 0px 20px 0px;
+  padding: 0px 0px 20px 0px;
   margin-top: 10px;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: column wrap;
+  align-content: center;
   justify-content: space-between;
-  width: 100%;
-  height: 43%;
+  width: auto;
+  /* height: 100%; */
+}
+
+.formGroup {
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
 .title {
@@ -43,16 +62,98 @@
   background-color: black;
 }
 
-.activityList {
-  position: fixed;
+.submitButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  width: 100px;
+  height: 40px;
+  padding: 5px;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  border: solid 2px black;
+  box-shadow: 2px 2px 0px black;
+  z-index: 0;
+  user-select: none;
+}
 
+.submitButton:active {
+  box-shadow: 0px 0px 0px black;
+  user-select: none;
+}
+
+.submitText {
+  position: relative;
+  width: auto;
+  height: auto;
+
+  font-weight: bold;
+  text-align: center;
+  color: var(--secondary-color);
+  user-select: none;
+}
+
+.buttonText {
+  position: relative;
+  width: auto;
+  height: auto;
+
+  font-weight: bold;
+  text-align: center;
+  color: var(--secondary-color);
+  user-select: none;
+}
+
+.addedCountries {
+  position: fixed;
+  width: 600px;
+  height: 200px;
   left: 51%;
   top: 80%;
   transform: translate(-50%, -50%);
-
-  height: auto;
   display: flex;
   flex-direction: row;
-  align-items: flex-end;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  overflow: scroll;
+}
+
+.addedCountry {
+  position: relative;
+  height: 30px;
+  border-radius: 25px;
+  background-color: var(--primary-color);
+  box-shadow: 4px 4px 0px var(--secondary-color);
+  border: black solid 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   justify-content: space-evenly;
+  padding: 5px;
+  margin: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+  padding-right: 5px;
+}
+
+.countryButton {
+  height: 40px;
+  width: 20px;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+  margin-right: 5px;
+  margin-left: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  background-color: var(--secondary-color);
 }

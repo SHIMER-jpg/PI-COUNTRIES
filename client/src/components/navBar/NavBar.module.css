@@ -11,6 +11,7 @@
   left: 0px;
   top: 0px;
   background-color: var(--primary-color);
+  z-index: 2;
 }
 
 .img {
@@ -21,4 +22,5 @@
   padding-top: 5px;
   /* width: auto;
   height: auto; */
+  user-select: none;
 }

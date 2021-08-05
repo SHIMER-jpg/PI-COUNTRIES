@@ -16,6 +16,8 @@ export const ORDER_RESULTS_NAME = "ORDER_RESULTS_NAME"
 
 export const ORDER_RESULTS_POP = "ORDER_RESULTS_POP"
 
+export const FIRST_LOGIN = "FIRST_LOGIN"
+
 export function getCountryList(payload){//receives searchString
     return function(dispatch){
         return axios.get("http://localhost:3001/countries?name=" + payload).then(json=>{
@@ -60,6 +62,10 @@ export function orderResultsByName(payload){ //receives either ASC or DESC
 
 export function orderResultsByPopulation(payload){ //receives two ints
     return ({type:ORDER_RESULTS_POP, payload})
+}
+
+export function firstLogin(){
+    return ({type:FIRST_LOGIN})
 }
 
 export default {
