@@ -75,7 +75,7 @@ export function Organizer(props) {
         </select>
         <span className={styles.span}>Filter by Continent</span>
         <select
-          disabled={filtered}
+          disabled={props.loadingError || filtered}
           onChange={handleChange}
           className={styles.selector}
           name="filterByContinent"
@@ -84,7 +84,7 @@ export function Organizer(props) {
             return <option value={continent}>{continent}</option>;
           })}
         </select>
-        <span disabled={filtered} className={styles.span}>
+        <span disabled={props.loadingError || filtered} className={styles.span}>
           Filter by Activity
         </span>
         <ul className={styles.checkboxContainer}>
@@ -96,7 +96,7 @@ export function Organizer(props) {
                   onChange={handleChange}
                   value={activity}
                   name={activity}
-                  disabled={filtered}
+                  disabled={props.loadingError || filtered}
                 ></input>
                 <label>{activity}</label>
               </li>
@@ -109,6 +109,7 @@ export function Organizer(props) {
             className={styles.applyButton}
             type="submit"
             value="Apply Filters"
+            disabled={props.loadingError}
           />
         )}
         {filtered && (
@@ -131,6 +132,7 @@ function mapStateToProps(state) {
   return {
     activityList: state.activityList,
     continentList: state.continentList,
+    loadingError: state.loadingError,
   };
 }
 

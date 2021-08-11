@@ -9,6 +9,7 @@ import {
   ORDER_RESULTS_POP,
   SET_PAGE,
   FIRST_LOGIN,
+  SET_LOADING_ERROR,
 } from "../actions";
 
 var initialState = {
@@ -20,6 +21,7 @@ var initialState = {
   page: 1,
   newActivity: {},
   firstLogin: true,
+  loadingError: false,
 };
 
 export default function reducer(state = initialState, action) {
@@ -30,7 +32,6 @@ export default function reducer(state = initialState, action) {
       var continentList = [];
       var countryCodeList = [];
       action.payload.forEach((country) => {
-        console.log(country.activities);
         if (!continentList.includes(country.continent)) {
           continentList.push(country.continent);
         }
@@ -40,13 +41,14 @@ export default function reducer(state = initialState, action) {
           }
         });
       });
-      console.log(activityList);
+
       return {
         ...state,
         countryCodeList: countryCodeList,
         countryList: action.payload,
         activityList: activityList,
         continentList: continentList,
+        loadingError: false,
       };
 
     case GET_COUNTRY_DETAIL:
@@ -139,6 +141,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         firstLogin: false,
+      };
+
+    case SET_LOADING_ERROR:
+      return {
+        ...state,
+        loadingError: true,
       };
 
     default:

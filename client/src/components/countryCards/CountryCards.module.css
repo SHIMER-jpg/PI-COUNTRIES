@@ -7,3 +7,17 @@
   left: 250px;
   width: 80vw;
 }
+
+.loadingError {
+  width: 500px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+
+  color: var(--secondary-color);
+  background-color: red;
+  box-shadow: 4px 4px 0px var(--secondary-color);
+  border: 4px solid black;
+}

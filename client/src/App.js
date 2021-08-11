@@ -17,7 +17,7 @@ function App() {
     <Router>
       <div className="App">
         {!firstLogin && <Animation />}
-        {firstLogin && <Route path="/" component={LandingPage} />}
+        {firstLogin && <Route exact path="/" component={LandingPage} />}
         <Route path="/" component={NavBar} />
         {!firstLogin && <Route exact path="/" component={Home} />}
         <Route path="/activity" component={ActivityForm} />

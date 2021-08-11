@@ -88,13 +88,21 @@ export function ActivityForm(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setActivity({
-    //   ...activity,
-    //   countries: props.countryList.map((c) => c.id),
-    // });
-    props.createActivity(activity);
-    props.getCountryList("");
-    props.history.push("/");
+    if (activity.name == "") {
+      alert("Name cannot be empty!");
+    } else if (activity.difficulty == 0) {
+      alert("Difficulty cannot be 0");
+    } else if (activity.duration == 0) {
+      alert("Duration cannot be 0");
+    } else if (activity.seasonArray.length == 0) {
+      alert("Must select at least one seasson");
+    } else if (activity.countries.length == 0) {
+      alert("Must select at least one country");
+    } else {
+      props.createActivity(activity);
+      props.getCountryList("");
+      props.history.push("/");
+    }
   };
 
   return (
