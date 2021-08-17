@@ -21,10 +21,6 @@ export function Organizer(props) {
   //   props.getCountryList("");
   // }, [props.activityList]);
 
-  function removeChecked() {
-
-  }
-  
   function handleSubmit(e) {
     e.preventDefault();
     props.filterResults(input);
@@ -84,6 +80,7 @@ export function Organizer(props) {
           className={styles.selector}
           name="filterByContinent"
         >
+          <option value="all">All</option>;
           {props.continentList.map((continent) => {
             return <option value={continent}>{continent}</option>;
           })}
@@ -122,7 +119,6 @@ export function Organizer(props) {
             onClick={() => {
               props.getCountryList("");
               setFiltered(!filtered);
-              removeChecked();
             }}
             type="reset"
             value="Remove Filters"

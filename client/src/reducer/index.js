@@ -91,7 +91,7 @@ export default function reducer(state = initialState, action) {
       var activityList = action.payload.filterByActivity;
       var countryList = state.countryList;
 
-      if (continent != "") {
+      if (continent != "" && continent != "all") {
         countryList = countryList.filter((country) => {
           return country.continent == continent;
         });

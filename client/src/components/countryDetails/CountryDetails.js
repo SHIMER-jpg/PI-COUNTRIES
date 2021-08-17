@@ -5,20 +5,13 @@ import { useEffect } from "react";
 import ActivityCard from "../activityCard/ActivityCard";
 
 export function CountryDetails(props) {
-  /*"name": "Afghanistan",
-    "flag": "https://restcountries.eu/data/afg.svg",
-    "continent": "Asia",
-    "capital": "Kabul",
-    "subregion": "Southern Asia",
-    "area": 652230,
-    "population": 27657145, */
-
   useEffect(() => {
     props.getCountryDetail(props.match.params.id);
     props.setPage(1);
   }, []);
 
   var {
+    id,
     name,
     flag,
     continent,
@@ -34,7 +27,9 @@ export function CountryDetails(props) {
       <div className={styles.detailsContainer}>
         {/* <h2 className={styles.title}>{name?name.toUpperCase():name} </h2> */}
         <h2 className={styles.title}>
-          {name ? name.toUpperCase() : "loading"}{" "}
+          {name
+            ? name.toUpperCase() + "  (" + id.toUpperCase() + ")"
+            : "loading"}{" "}
         </h2>
         <img className={styles.flagImg} src={`${flag}`} />
         <div className={styles.infoContainer}>
