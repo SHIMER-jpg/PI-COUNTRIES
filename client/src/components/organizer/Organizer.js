@@ -17,10 +17,14 @@ export function Organizer(props) {
 
   const [filtered, setFiltered] = useState(false);
 
-  useEffect(() => {
-    // props.getCountryList("");
-  }, [props.activityList]);
+  // useEffect(() => {
+  //   props.getCountryList("");
+  // }, [props.activityList]);
 
+  function removeChecked() {
+
+  }
+  
   function handleSubmit(e) {
     e.preventDefault();
     props.filterResults(input);
@@ -118,6 +122,7 @@ export function Organizer(props) {
             onClick={() => {
               props.getCountryList("");
               setFiltered(!filtered);
+              removeChecked();
             }}
             type="reset"
             value="Remove Filters"

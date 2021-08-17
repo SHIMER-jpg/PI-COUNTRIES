@@ -14,14 +14,14 @@ const router = Router();
 
 async function firstLoad() {
   firstLoadBoolean = false;
-  const files = fs.readFileSync(
-    "/Users/santiagodiaz/Desktop/PROGRA/HENRY/PI-Countries/resources/endpoint_all.json"
-  );
-  const result = await loadDataBase(JSON.parse(files));
+  // const files = fs.readFileSync(
+  //   "/Users/santiagodiaz/Desktop/PROGRA/HENRY/PI-Countries/resources/endpoint_all.json"
+  // );
+  // const result = await loadDataBase(JSON.parse(files));
 
-  // const files = await fetch("https://restcountries.eu/rest/v2/all");
-  // const filesJson = await files.json();
-  // const result = await loadDataBase(filesJson);
+  const files = await fetch("https://restcountries.eu/rest/v2/all");
+  const filesJson = await files.json();
+  const result = await loadDataBase(filesJson);
   await loadActivities();
   return result;
 }
